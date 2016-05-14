@@ -16,7 +16,8 @@ double selectionswitchTemperature(double MEASUREMENT)
            "6 - Градус Рёмера;\n"
            "7 - Градус Цельсия;\n"
            "8 - Градус Фаренгейта;\n \t");
-    scanf("%d", &key.input_choice);
+    //scanf("%d", &key.input_choice);
+    key.input_choice = parsing_id(key.in);
     while(key.input_choice >= 9 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%d", &key.input_choice);
@@ -31,7 +32,8 @@ double selectionswitchTemperature(double MEASUREMENT)
            "6 - Градус Рёмера;\n"
            "7 - Градус Цельсия;\n"
            "8 - Градус Фаренгейта;\n \t");
-    scanf("%d", &key.output_choice);
+    //scanf("%d", &key.output_choice);
+    key.output_choice = parsing_id(key.out);
     while(key.output_choice == key.input_choice || key.output_choice >= 9 || key.input_choice == 0)  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");

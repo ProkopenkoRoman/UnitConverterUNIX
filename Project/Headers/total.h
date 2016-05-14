@@ -12,7 +12,9 @@ typedef struct entered_and_gated_parameters {
 
 typedef struct working_values {
     double gate;
-    int input_choice, id, output_choice;
+    int id;
+    int input_choice, output_choice;
+    char in[5], out[5];
 } FunctionsParameters;
 
 
@@ -81,47 +83,16 @@ double bitsTozetabytes(double DATA);
 double zetabytesTobits(double DATA);
 
 //TIME
-/* double nsec_to_sec ( double TIME);
- double nsec_to_msec ( double TIME);
- double nsec_to_mksec ( double TIME);
- double nsec_to_sec ( double TIME);*/
+
  double nsec_to_min ( double TIME);
- /*double nsec_to_chas ( double TIME);
- double nsec_to_sut ( double TIME);
- double nsec_to_week ( double TIME);
- double nsec_to_year ( double TIME);
- double nsec_to_vek ( double TIME);
+
 
  double mksec_to_sec ( double TIME);
  double mksec_to_nsec ( double TIME);
- double mksec_to_msec ( double TIME);*/
- double mksec_to_min ( double TIME);/*
- double mksec_to_chas ( double TIME);
- double mksec_to_sut ( double TIME);
- double mksec_to_week ( double TIME);
- double mksec_to_year ( double TIME);
- double mksec_to_vek ( double TIME);
-
- double msec_to_sec ( double TIME);
- double msec_to_nsec ( double TIME);
- double msec_to_mksec ( double TIME);*/
- double msec_to_min ( double TIME);/*
- double msec_to_chas ( double TIME);
- double msec_to_sut ( double TIME);
- double msec_to_week ( double TIME);
- double msec_to_year ( double TIME);
- double msec_to_vek ( double TIME);
-
- double sec_to_nsec ( double TIME);
- double sec_to_mksec ( double TIME);
- double sec_to_msec ( double TIME);*/
- double sec_to_min ( double TIME);/*
- double sec_to_chas ( double TIME);
- double sec_to_sut ( double TIME);
- double sec_to_week ( double TIME);
- double sec_to_year ( double TIME);
- double sec_to_vek ( double TIME);*/
-
+ double mksec_to_msec ( double TIME);
+ double mksec_to_min ( double TIME);
+ double msec_to_min ( double TIME);
+ double sec_to_min ( double TIME);
  double min_to_nsec ( double TIME);
  double min_to_mksec ( double TIME);
  double min_to_msec ( double TIME);
@@ -131,56 +102,19 @@ double zetabytesTobits(double DATA);
  double min_to_week ( double TIME);
  double min_to_year ( double TIME);
  double min_to_vek ( double TIME);
-/*
- double chas_to_nsec ( double TIME);
- double chas_to_mksec ( double TIME);
- double chas_to_msec ( double TIME);
- double chas_to_sec ( double TIME);*/
- double chas_to_min ( double TIME);/*
- double chas_to_sut ( double TIME);
- double chas_to_week ( double TIME);
- double chas_to_year ( double TIME);
- double chas_to_vek ( double TIME);
-
+ double chas_to_min ( double TIME);
  double sut_to_nsec ( double TIME);
  double sut_to_mksec ( double TIME);
  double sut_to_msec ( double TIME);
- double sut_to_sec ( double TIME);*/
- double sut_to_min ( double TIME);/*
- double sut_to_chas ( double TIME);
- double sut_to_week ( double TIME);
- double sut_to_year ( double TIME);
- double sut_to_vek ( double TIME);
-
+ double sut_to_sec ( double TIME);
+ double sut_to_min ( double TIME);
  double week_to_nsec ( double TIME);
  double week_to_mksec ( double TIME);
  double week_to_msec ( double TIME);
- double week_to_sec ( double TIME);*/
- double week_to_min ( double TIME);/*
- double week_to_sut ( double TIME);
- double week_to_chas ( double TIME);
- double week_to_year ( double TIME);
- double week_to_vek ( double TIME);
-
- double year_to_nsec ( double TIME);
- double year_to_mksec ( double TIME);
- double year_to_msec ( double TIME);
- double year_to_sec ( double TIME);*/
- double year_to_min ( double TIME);/*
- double year_to_sut ( double TIME);
- double year_to_chas ( double TIME);
- double year_to_week ( double TIME);
- double year_to_vek ( double TIME);
-
- double vek_to_nsec ( double TIME);
- double vek_to_mksec ( double TIME);
- double vek_to_msec ( double TIME);
- double vek_to_sec ( double TIME);*/
- double vek_to_min ( double TIME);/*
- double vek_to_sut ( double TIME);
- double vek_to_chas ( double TIME);
- double vek_to_week ( double TIME);
- double vek_to_year ( double TIME);*/
+ double week_to_sec ( double TIME);
+ double week_to_min ( double TIME);
+ double year_to_min ( double TIME);
+ double vek_to_min ( double TIME);
 
 //ДАВЛЕНИЕ
 
@@ -1040,22 +974,11 @@ double kmch_to_mc (double SPEED);
 double kmch_to_uzl (double SPEED);
 double kmch_to_mah (double SPEED);
 double kmch_to_milch (double SPEED);
-//double uzl_to_mc (double SPEED);
 double uzl_to_kmch (double SPEED);
-//double uzl_to_mah (double SPEED);
-//double uzl_to_milch (double SPEED);
-//double mah_to_mc (double SPEED);
 double mah_to_kmch (double SPEED);
-//double mah_to_uzl (double SPEED);
-//double mah_to_milch (double SPEED);
-//double milch_to_mc (double SPEED);
 double milch_to_kmch (double SPEED);
-//double milch_to_uzl (double SPEED);
-//double milch_to_mah (double SPEED);
-//double mc_to_uzl (double SPEED);
 double mc_to_kmch (double SPEED);
-//double mc_to_mah (double SPEED);
-//double mc_to_milch (double SPEED);
+
 
 //Прототипы конвертирования ЭНЕРГИИ
 //джоули
@@ -1064,25 +987,13 @@ double joule_to_electronvolt (double ENERGY);
 double joule_to_kall (double ENERGY);
 double joule_to_tnt (double ENERGY);
 //Киловатт-час
-double kvatch_to_joule (double ENERGY);/*
-double kvatch_to_electronvolt (double ENERGY);
-double kvatch_to_kall (double ENERGY);
-double kvatch_to_tnt (double ENERGY);*/
+double kvatch_to_joule (double ENERGY);
 //Электронвольт
-double electronvolt_to_joule (double ENERGY);/*
-double electronvolt_to_kvatch (double ENERGY);
-double electronvolt_to_kall (double ENERGY);
-double electronvolt_to_tnt (double ENERGY);*/
+double electronvolt_to_joule (double ENERGY);
 //Калории
-double kall_to_joule (double ENERGY);/*
-double kall_to_kvatch (double ENERGY);
-double kall_to_electronvolt (double ENERGY);
-double kall_to_tnt (double ENERGY);*/
+double kall_to_joule (double ENERGY);
 //Тратиловый эквивалент
-double tnt_to_joule (double ENERGY);/*
-double tnt_to_kvatch (double ENERGY);
-double tnt_to_electronvolt (double ENERGY);
-double tnt_to_kall (double ENERGY);*/
+double tnt_to_joule (double ENERGY);
 
 
 #endif

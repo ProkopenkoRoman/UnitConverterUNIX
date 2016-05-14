@@ -43,11 +43,7 @@ int parsing_id(char *MEASUREMENT)
         }
 	}
 
-   /* for(i = 0; MEASUREMENT[i] != '\0'; i++) {
-        if(MEASUREMENT[i] == ',')
-            MEASUREMENT[i] = '.';
-    }
-*/
+
 	res = atoi(MEASUREMENT);
 	return res;
 }
