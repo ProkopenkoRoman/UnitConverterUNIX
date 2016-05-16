@@ -16,7 +16,7 @@ double selectionswitchQuantityOfSubstance(double MEASUREMENT)
            "6 - Фунт-молей;\n\t");
     key.input_choice = parsing_id(key.in);
     //scanf("%d", &key.input_choice);
-    while(key.input_choice >= 10 || key.input_choice == 0) {
+    while(key.input_choice >= 7 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%d", &key.input_choice);
     }
@@ -29,9 +29,9 @@ double selectionswitchQuantityOfSubstance(double MEASUREMENT)
            "4 - Киломолей;\n"
            "5 - Мегамолей;\n"
            "6 - Фунт-молей;\n\t");
-    key.input_choice = parsing_id(key.in);
+    key.output_choice = parsing_id(key.out);
     //scanf("%d", &key.output_choice);
-    while(key.output_choice == key.input_choice || key.input_choice >= 10 || key.input_choice == 0 )  {
+    while(key.output_choice == key.input_choice || key.input_choice >= 7 || key.input_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%d", &key.output_choice);
