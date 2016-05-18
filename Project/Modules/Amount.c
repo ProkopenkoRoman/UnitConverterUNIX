@@ -155,4 +155,3 @@ double flozs_TO_squaredmeters(double AMOUNT) {
 	AMOUNT = AMOUNT * 0.0000295735295625;  // Формула для перевода
 	return AMOUNT;
 }
-
