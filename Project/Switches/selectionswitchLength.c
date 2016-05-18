@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-#include"../Headers/total.h" /* Ñèìâîë '../' - escape-ñèìâîë - èñïîëüçóåòñÿ äëÿ ïåðåõîäà íà îäèí óðîâåíü âûøå;
-                                Ýòîò ñèìâîë èñïîëüçóåòñÿ ñòîëüêî ðàç, íà ñêîëüêî óðîâíåé íóæíî ïîäíÿòüñÿ; */
+#include"../Headers/total.h" /* Символ '../' - escape-символ - используется для перехода на один уровень выше;
+                                Этот символ используется столько раз, на сколько уровней нужно подняться; */
 
 
 double selectionswitchLength(double MEASUREMENT)
@@ -9,7 +9,7 @@ double selectionswitchLength(double MEASUREMENT)
     FunctionsParameters key;
 
     printf("Выберите величину, из которой Вы хотите произвести конвертирование:\n"
-          "1 - Миллиметр;\n"
+           "1 - Миллиметр;\n"
            "2 - Метр;\n"
            "3 - Сантиметр;\n"
            "4 - Дециметр;\n"
@@ -18,20 +18,21 @@ double selectionswitchLength(double MEASUREMENT)
            "7 - Аршин;\n"
            "8 - Миля;\n"
            "9 - Ярд;\n"
-           "10 - Фут;\n "
-           "11 - Микрометр;\n"
-           "12 - Нанометр; \n"
-           "13 - Ангстрем;\n"
-           "14 - Морская миля;\n \t");
-    //scanf("%d", &key.input_choice);
-    key.input_choice = parsing_id(key.in);
+           "10 - Фут;\n \t"
+           "11 - Микрометр;\n \t"
+           "12 - Нанометр; \n \t"
+           "13 - Ангстрем;\n \t"
+           "14 - Морская миля; \n \t");
+  //scanf("%d", &key.input_choice);
+   key.input_choice = parsing_id(key.in);
     while(key.input_choice > 14 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%d", &key.input_choice);
     }
 
-   printf("Выберите величину, из которой Вы хотите произвести конвертирование:\n"
-          "1 - Миллиметр;\n"
+    printf("Выберите величину, в которую Вы хотите конвертировать Вашу величину.\n"
+           "Не нужно выбирать ту же величину, что Вы выбрали в качестве конвертируемой:\n"
+           "1 - Миллиметр;\n"
            "2 - Метр;\n"
            "3 - Сантиметр;\n"
            "4 - Дециметр;\n"
@@ -40,11 +41,11 @@ double selectionswitchLength(double MEASUREMENT)
            "7 - Аршин;\n"
            "8 - Миля;\n"
            "9 - Ярд;\n"
-           "10 - Фут;\n "
-           "11 - Микрометр;\n"
-           "12 - Нанометр; \n"
-           "13 - Ангстрем;\n"
-           "14 - Морская миля;\n \t");
+           "10 - Фут;\n \t"
+           "11 - Микрометр;\n \t"
+           "12 - Нанометр; \n \t"
+           "13 - Ангстрем;\n \t"
+           "14 - Морская миля; \n \t");
     //scanf("%d", &key.output_choice);
     key.output_choice = parsing_id(key.out);
     while(key.output_choice == key.input_choice || key.input_choice > 14 || key.input_choice == 0 )  {
@@ -53,73 +54,77 @@ double selectionswitchLength(double MEASUREMENT)
         scanf("%d", &key.output_choice);
     }
 
-  
+    if(key.input_choice < 10 && key.output_choice < 10)
+		key.id = key.input_choice * 10 + key.output_choice;
+	if(key.input_choice == 10 && key.output_choice <= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
-	//printf("ID равно %d", key.id);
+	if(key.input_choice < 10 && key.output_choice == 10)
+		key.id = key.input_choice * 100 + key.output_choice;
+
     switch(key.id) {
-        //Ìèëëèìåòð
-        case 102:
+        //Миллиметр
+        case 12:
             key.gate = millimeters_TO_meters(MEASUREMENT);
             break;
-        case 103:
-            key.gate = millimeters_TO_centimeters(MEASUREMENT);
+        case 13:
+            key.gate = meters_TO_centimeters(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 104:
-            key.gate = millimeters_TO_decimeters(MEASUREMENT);
+        case 14:
+            key.gate = meters_TO_decimeters(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 105:
-            key.gate = millimeters_TO_kilometers(MEASUREMENT);
+        case 15:
+            key.gate = meters_TO_kilometers(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 106:
-            key.gate = millimeters_TO_fathoms(MEASUREMENT);
+        case 16:
+            key.gate = meters_TO_fathoms(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 107:
-            key.gate = millimeters_TO_arshins(MEASUREMENT);
+        case 17:
+            key.gate = meters_TO_arshins(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 108:
-            key.gate = millimeters_TO_miles(MEASUREMENT);
+        case 18:
+            key.gate = meters_TO_miles(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 109:
-            key.gate = millimeters_TO_yards(MEASUREMENT);
+        case 19:
+            key.gate = meters_TO_yards(millimeters_TO_meters(MEASUREMENT));
             break;
-        case 1010:
-            key.gate = millimeters_TO_foots(MEASUREMENT);
+        case 110:
+            key.gate = meters_TO_foots(millimeters_TO_meters(MEASUREMENT));
             break;
         case 111:
-            key.gate = millimeters_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(millimeters_TO_meters(MEASUREMENT));
             break;
         case 112:
-            key.gate = millimeters_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(millimeters_TO_meters(MEASUREMENT));
             break;
         case 113:
-            key.gate = millimeters_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(millimeters_TO_meters(MEASUREMENT));
             break;
         case 114:
-            key.gate = millimeters_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(millimeters_TO_meters(MEASUREMENT));
             break;
-        //Ìåòð
-        case 201:
+        //Метр
+        case 21:
             key.gate = meters_TO_millimeters(MEASUREMENT);
             break;
-        case 203:
+        case 23:
             key.gate = meters_TO_centimeters(MEASUREMENT);
             break;
-        case 204:
+        case 24:
             key.gate = meters_TO_decimeters(MEASUREMENT);
             break;
-        case 205:
+        case 25:
             key.gate = meters_TO_kilometers(MEASUREMENT);
             break;
-        case 206:
+        case 26:
             key.gate = meters_TO_fathoms(MEASUREMENT);
             break;
-        case 207:
+        case 27:
             key.gate = meters_TO_arshins(MEASUREMENT);
             break;
-        case 208:
+        case 28:
             key.gate = meters_TO_miles(MEASUREMENT);
             break;
-        case 209:
+        case 29:
             key.gate = meters_TO_yards(MEASUREMENT);
             break;
         case 210:
@@ -137,485 +142,485 @@ double selectionswitchLength(double MEASUREMENT)
         case 214:
             key.gate = meters_TO_nauticalmiles(MEASUREMENT);
             break;
-        //Ñàíòèìåòð
-        case 302:
+        //Сантиметр
+        case 32:
             key.gate = centimeters_TO_meters(MEASUREMENT);
             break;
-        case 301:
-            key.gate = centimeters_TO_millimeters(MEASUREMENT);
+        case 31:
+            key.gate = meters_TO_millimeters(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 304:
-            key.gate = centimeters_TO_decimeters(MEASUREMENT);
+        case 34:
+            key.gate = meters_TO_decimeters(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 305:
-            key.gate = centimeters_TO_kilometers(MEASUREMENT);
+        case 35:
+            key.gate = meters_TO_kilometers(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 306:
-            key.gate = centimeters_TO_fathoms(MEASUREMENT);
+        case 36:
+            key.gate = meters_TO_fathoms(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 307:
-            key.gate = centimeters_TO_arshins(MEASUREMENT);
+        case 37:
+            key.gate = meters_TO_arshins(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 308:
-            key.gate = centimeters_TO_miles(MEASUREMENT);
+        case 38:
+            key.gate = meters_TO_miles(centimeters_TO_meters(MEASUREMENT));
             break;
-        case 309:
-            key.gate = centimeters_TO_yards(MEASUREMENT);
+        case 39:
+            key.gate = meters_TO_yards(centimeters_TO_meters(MEASUREMENT));
             break;
         case 310:
-            key.gate = centimeters_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(centimeters_TO_meters(MEASUREMENT));
             break;
         case 311:
-            key.gate = centimeters_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(centimeters_TO_meters(MEASUREMENT));
             break;
         case 312:
-            key.gate = centimeters_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(centimeters_TO_meters(MEASUREMENT));
             break;
         case 313:
-            key.gate = centimeters_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(centimeters_TO_meters(MEASUREMENT));
             break;
         case 314:
-            key.gate = centimeters_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(centimeters_TO_meters(MEASUREMENT));
             break;
-        //Äåöèìåòð
-        case 403:
-            key.gate = decimeters_TO_centimeters(MEASUREMENT);
+        //Дециметр
+        case 43:
+            key.gate = meters_TO_centimeters(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 402:
+        case 42:
             key.gate = decimeters_TO_meters(MEASUREMENT);
             break;
-        case 401:
-            key.gate = decimeters_TO_millimeters(MEASUREMENT);
+        case 41:
+            key.gate = meters_TO_millimeters(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 405:
-            key.gate = decimeters_TO_kilometers(MEASUREMENT);
+        case 45:
+            key.gate = meters_TO_kilometers(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 406:
-            key.gate = decimeters_TO_fathoms(MEASUREMENT);
+        case 46:
+            key.gate = meters_TO_fathoms(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 407:
-            key.gate = decimeters_TO_arshins(MEASUREMENT);
+        case 47:
+            key.gate = meters_TO_arshins(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 408:
-            key.gate = decimeters_TO_miles(MEASUREMENT);
+        case 48:
+            key.gate = meters_TO_miles(decimeters_TO_meters(MEASUREMENT));
             break;
-        case 409:
-            key.gate = decimeters_TO_yards(MEASUREMENT);
+        case 49:
+            key.gate = meters_TO_yards(decimeters_TO_meters(MEASUREMENT));
             break;
         case 410:
-            key.gate = decimeters_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(decimeters_TO_meters(MEASUREMENT));
             break;
         case 411:
-            key.gate = decimeters_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(decimeters_TO_meters(MEASUREMENT));
             break;
         case 412:
-            key.gate = decimeters_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(decimeters_TO_meters(MEASUREMENT));
             break;
         case 413:
-            key.gate = decimeters_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(decimeters_TO_meters(MEASUREMENT));
             break;
         case 414:
-            key.gate = decimeters_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(decimeters_TO_meters(MEASUREMENT));
             break;
-        //Êèëîìåòð
-        case 504:
-            key.gate = kilometers_TO_decimeters(MEASUREMENT);
+        //Километр
+        case 54:
+            key.gate = meters_TO_decimeters(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 503:
-            key.gate = kilometers_TO_centimeters(MEASUREMENT);
+        case 53:
+            key.gate = meters_TO_centimeters(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 502:
+        case 52:
             key.gate = kilometers_TO_meters(MEASUREMENT);
             break;
-        case 501:
-            key.gate = kilometers_TO_millimeters(MEASUREMENT);
+        case 51:
+            key.gate = meters_TO_millimeters(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 506:
-            key.gate = kilometers_TO_fathoms(MEASUREMENT);
+        case 56:
+            key.gate = meters_TO_fathoms(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 507:
-            key.gate = kilometers_TO_arshins(MEASUREMENT);
+        case 57:
+            key.gate = meters_TO_arshins(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 508:
-            key.gate = kilometers_TO_miles(MEASUREMENT);
+        case 58:
+            key.gate = meters_TO_miles(kilometers_TO_meters(MEASUREMENT));
             break;
-        case 509:
-            key.gate = kilometers_TO_yards(MEASUREMENT);
+        case 59:
+            key.gate = meters_TO_yards(kilometers_TO_meters(MEASUREMENT));
             break;
         case 510:
-            key.gate = kilometers_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(kilometers_TO_meters(MEASUREMENT));
             break;
         case 511:
-            key.gate = kilometers_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(kilometers_TO_meters(MEASUREMENT));
             break;
         case 512:
-            key.gate = kilometers_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(kilometers_TO_meters(MEASUREMENT));
             break;
         case 513:
-            key.gate = kilometers_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(kilometers_TO_meters(MEASUREMENT));
             break;
         case 514:
-            key.gate = kilometers_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(kilometers_TO_meters(MEASUREMENT));
             break;
-        //Ñàæåíü
-        case 605:
-            key.gate = fathoms_TO_kilometers(MEASUREMENT);
+        //Сажень
+        case 65:
+            key.gate = meters_TO_kilometers(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 604:
-            key.gate = fathoms_TO_decimeters(MEASUREMENT);
+        case 64:
+            key.gate = meters_TO_decimeters(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 603:
-            key.gate = fathoms_TO_centimeters(MEASUREMENT);
+        case 63:
+            key.gate = meters_TO_centimeters(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 602:
+        case 62:
             key.gate = fathoms_TO_meters(MEASUREMENT);
             break;
-        case 601:
-            key.gate = fathoms_TO_millimeters(MEASUREMENT);
+        case 61:
+            key.gate = meters_TO_millimeter(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 607:
-            key.gate = fathoms_TO_arshins(MEASUREMENT);
+        case 67:
+            key.gate = meters_TO_arshins(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 608:
-            key.gate = fathoms_TO_miles(MEASUREMENT);
+        case 68:
+            key.gate = meters_TO_miles(fathoms_TO_meters(MEASUREMENT));
             break;
-        case 609:
-            key.gate = fathoms_TO_yards(MEASUREMENT);
+        case 69:
+            key.gate = meters_TO_yards(fathoms_TO_meters(MEASUREMENT));
             break;
         case 610:
-            key.gate = fathoms_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(fathoms_TO_meters(MEASUREMENT));
             break;
         case 611:
-            key.gate = fathoms_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(fathoms_TO_meters(MEASUREMENT));
             break;
         case 612:
-            key.gate = fathoms_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(fathoms_TO_meters(MEASUREMENT));
             break;
         case 613:
-            key.gate = fathoms_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(fathoms_TO_meters(MEASUREMENT));
             break;
         case 614:
-            key.gate = fathoms_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(fathoms_TO_meters(MEASUREMENT));
             break;
-         //Àðøèí
-        case 706:
-            key.gate = arshins_TO_fathoms(MEASUREMENT);
+         //Аршин
+        case 76:
+            key.gate = meters_TO_fathoms(arshins_TO_meters(MEASUREMENT));
             break;
-        case 705:
-            key.gate = arshins_TO_kilometers(MEASUREMENT);
+        case 75:
+            key.gate = meters_TO_kilometers(arshins_TO_meters(MEASUREMENT));
             break;
-        case 704:
-            key.gate = arshins_TO_decimeters(MEASUREMENT);
+        case 74:
+            key.gate = meters_TO_decimeters(arshins_TO_meters(MEASUREMENT));
             break;
-        case 703:
-            key.gate = arshins_TO_centimeters(MEASUREMENT);
+        case 73:
+            key.gate = meters_TO_centimeters(arshins_TO_meters(MEASUREMENT));
             break;
-        case 702:
+        case 72:
             key.gate = arshins_TO_meters(MEASUREMENT);
             break;
-        case 701:
-            key.gate = arshins_TO_millimeters(MEASUREMENT);
+        case 71:
+            key.gate = meters_TO_millimeters(arshins_TO_meters(MEASUREMENT));
             break;
-        case 708:
-            key.gate = arshins_TO_miles(MEASUREMENT);
+        case 78:
+            key.gate = meters_TO_miles(arshins_TO_meters(MEASUREMENT));
             break;
-        case 709:
-            key.gate = arshins_TO_yards(MEASUREMENT);
+        case 79:
+            key.gate = meters_TO_yards(arshins_TO_meters(MEASUREMENT));
             break;
         case 710:
-            key.gate = arshins_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(arshins_TO_meters(MEASUREMENT));
             break;
         case 711:
-            key.gate = arshins_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(arshins_TO_meters(MEASUREMENT));
             break;
         case 712:
-            key.gate = arshins_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(arshins_TO_meters(MEASUREMENT));
             break;
         case 713:
-            key.gate = arshins_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(arshins_TO_meters(MEASUREMENT));
             break;
         case 714:
-            key.gate = arshins_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(arshins_TO_meters(MEASUREMENT));
             break;
-        //Ìèëÿ
-        case 807:
-            key.gate = miles_TO_arshins(MEASUREMENT);
+        //Миля
+        case 87:
+            key.gate = meters_TO_arshins(miles_TO_meters(MEASUREMENT));
             break;
-        case 806:
-            key.gate = miles_TO_fathoms(MEASUREMENT);
+        case 86:
+            key.gate = meters_TO_fathoms(miles_TO_meters(MEASUREMENT));
             break;
-        case 805:
-            key.gate = miles_TO_kilometers(MEASUREMENT);
+        case 85:
+            key.gate = meters_TO_kilometers(miles_TO_meters(MEASUREMENT));
             break;
-        case 804:
-            key.gate = miles_TO_decimeters(MEASUREMENT);
+        case 84:
+            key.gate = meters_TO_decimeters(miles_TO_metersMEASUREMENT));
             break;
-        case 803:
-            key.gate = miles_TO_centimeters(MEASUREMENT);
+        case 83:
+            key.gate = meters_TO_centimeters(miles_TO_meters(MEASUREMENT));
             break;
-        case 802:
+        case 82:
             key.gate = miles_TO_meters(MEASUREMENT);
             break;
-        case 801:
-            key.gate = miles_TO_millimeters(MEASUREMENT);
+        case 81:
+            key.gate = meters_TO_millimeters(miles_TO_meters(MEASUREMENT));
             break;
-        case 809:
-            key.gate = miles_TO_yards(MEASUREMENT);
+        case 89:
+            key.gate = meters_TO_yards(miles_TO_meters(MEASUREMENT));
             break;
         case 810:
-            key.gate = miles_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(miles_TO_meters(MEASUREMENT));
             break;
         case 811:
-            key.gate = miles_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(miles_TO_meters(MEASUREMENT));
             break;
         case 812:
-            key.gate = miles_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(miles_TO_meters(MEASUREMENT));
             break;
         case 813:
-            key.gate = miles_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(miles_TO_meters(MEASUREMENT));
             break;
         case 814:
-            key.gate = miles_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(miles_TO_meters(MEASUREMENT));
             break;
-        //ßðä
-        case 908:
-            key.gate = yards_TO_miles(MEASUREMENT);
+        //Ярд
+        case 98:
+            key.gate = meters_TO_miles(yards_TO_meters(MEASUREMENT));
             break;
-        case 907:
-            key.gate = yards_TO_arshins(MEASUREMENT);
+        case 97:
+            key.gate = meters_TO_arshins(yards_TO_meters(MEASUREMENT));
             break;
-        case 906:
-            key.gate = yards_TO_fathoms(MEASUREMENT);
+        case 96:
+            key.gate = meters_TO_fathoms(yards_TO_meters(MEASUREMENT));
             break;
-        case 905:
-            key.gate = yards_TO_kilometers(MEASUREMENT);
+        case 95:
+            key.gate = meters_TO_kilometers(yards_TO_meters(MEASUREMENT));
             break;
-        case 904:
-            key.gate = yards_TO_decimeters(MEASUREMENT);
+        case 94:
+            key.gate = meters_TO_decimeters(yards_TO_meters(MEASUREMENT));
             break;
-        case 903:
-            key.gate = yards_TO_centimeters(MEASUREMENT);
+        case 93:
+            key.gate = meters_TO_centimeters(yards_TO_meters(MEASUREMENT));
             break;
-        case 902:
-            key.gate = yards_TO_meters(MEASUREMENT);
+        case 92:
+            key.gate = meters_TO_meters(MEASUREMENT);
             break;
-        case 901:
-            key.gate = yards_TO_millimeters(MEASUREMENT);
+        case 91:
+            key.gate = meters_TO_millimeters(yards_TO_meters(MEASUREMENT));
             break;
         case 910:
-            key.gate = yards_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(yards_TO_meters(MEASUREMENT));
             break;
         case 911:
-            key.gate = yards_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(yards_TO_meters(MEASUREMENT));
             break;
         case 912:
-            key.gate = yards_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(yards_TO_meters(MEASUREMENT));
             break;
         case 913:
-            key.gate = yards_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(yards_TO_meters(MEASUREMENT));
             break;
         case 914:
-            key.gate = yards_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(yards_TO_meters(MEASUREMENT));
             break;
-        //Ôóò
+        //Фут
         case 1009:
-            key.gate = foots_TO_yards(MEASUREMENT);
+            key.gate = meters_TO_yards(foots_TO_meters(MEASUREMENT));
             break;
         case 1008:
-            key.gate = foots_TO_miles(MEASUREMENT);
+            key.gate = meters_TO_miles(foots_TO_meters(MEASUREMENT));
             break;
         case 1007:
-            key.gate = foots_TO_arshins(MEASUREMENT);
+            key.gate = meters_TO_arshins(foots_TO_meters(MEASUREMENT));
             break;
         case 1006:
-            key.gate = foots_TO_fathoms(MEASUREMENT);
+            key.gate = meters_TO_fathoms(foots_TO_meters(MEASUREMENT));
             break;
         case 1005:
-            key.gate = foots_TO_kilometers(MEASUREMENT);
+            key.gate = meters_TO_kilometers(foots_TO_meters(MEASUREMENT));
             break;
         case 1004:
-            key.gate = foots_TO_decimeters(MEASUREMENT);
+            key.gate = meters_TO_decimeters(foots_TO_meters(MEASUREMENT));
             break;
         case 1003:
-            key.gate = foots_TO_centimeters(MEASUREMENT);
+            key.gate = meters_TO_centimeters(foots_TO_meters(MEASUREMENT));
             break;
         case 1002:
             key.gate = foots_TO_meters(MEASUREMENT);
             break;
         case 1001:
-            key.gate = foots_TO_millimeters(MEASUREMENT);
+            key.gate = meters_TO_millimeters(foots_TO_meters(MEASUREMENT));
             break;
         case 1011:
-            key.gate = foots_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(foots_TO_meters(MEASUREMENT));
             break;
         case 1012:
-            key.gate = foots_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(foots_TO_meters(MEASUREMENT));
             break;
         case 1013:
-            key.gate = foots_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(foots_TO_meters(MEASUREMENT));
             break;
         case 1014:
-            key.gate = foots_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(foots_TO_meters(MEASUREMENT));
             break;
-        //Ìèêðîìåòð
+        //Микрометр
         case 1110:
-            key.gate = micrometers_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1109:
-            key.gate = micrometers_TO_yards(MEASUREMENT);
+            key.gate = meters_TO_yards(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1108:
-            key.gate = micrometers_TO_miles(MEASUREMENT);
+            key.gate = meters_TO_miles(micrometers_TO_meters(MEASUREMENT));
             break;
-        case 1107:
-            key.gate = micrometers_TO_arshins(MEASUREMENT);
+        case 1107
+            key.gate = meters_TO_arshins(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1106:
-            key.gate = micrometers_TO_fathoms(MEASUREMENT);
+            key.gate = meters_TO_fathoms(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1105:
-            key.gate = micrometers_TO_kilometers(MEASUREMENT);
+            key.gate = meters_TO_kilometers(micrometers_TO_meters(MEASUREMENT));
             break;
-        case 1104:
-            key.gate = micrometers_TO_decimeters(MEASUREMENT);
+        case 1104;
+            key.gate = meters_TO_decimeters(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1103:
-            key.gate = micrometers_TO_centimeters(MEASUREMENT);
+            key.gate = meters_TO_centimeters(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1102:
-            key.gate = micrometers_TO_meters(MEASUREMENT);
+            key.gate = meters_TO_meters(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1101:
-            key.gate = micrometers_TO_millimeters(MEASUREMENT);
+            key.gate = meters_TO_millimeters(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1112:
-            key.gate = micrometers_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1113:
-            key.gate = micrometers_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(micrometers_TO_meters(MEASUREMENT));
             break;
         case 1114:
-            key.gate = micrometers_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(micrometers_TO_meters(MEASUREMENT));
             break;
-        //Íàíîìåòð
+        //Нанометр
         case 1211:
-            key.gate = nanometers_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1210:
-            key.gate = nanometers_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1209:
-            key.gate = nanometers_TO_yards(MEASUREMENT);
+            key.gate = meters_TO_yards(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1208:
-            key.gate = nanometers_TO_miles(MEASUREMENT);
+            key.gate = meters_TO_miles(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1207:
-            key.gate = nanometers_TO_arshins(MEASUREMENT);
+            key.gate = meters_TO_arshins(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1206:
-            key.gate = nanometers_TO_fathoms(MEASUREMENT);
+            key.gate = meters_TO_fathoms(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1205:
-            key.gate = nanometers_TO_kilometers(MEASUREMENT);
+            key.gate = meters_TO_kilometers(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1204:
-            key.gate = nanometers_TO_decimeters(MEASUREMENT);
+            key.gate = meters_TO_decimeters(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1203:
-            key.gate = nanometers_TO_centimeters(MEASUREMENT);
+            key.gate = meters_TO_centimeters(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1202:
             key.gate = nanometers_TO_meters(MEASUREMENT);
             break;
         case 1201:
-            key.gate = nanometers_TO_millimeters(MEASUREMENT);
+            key.gate = meters_TO_millimeters(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1213:
-            key.gate = nanometers_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(nanometers_TO_meters(MEASUREMENT));
             break;
         case 1214:
-            key.gate = nanometers_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(nanometers_TO_meters(MEASUREMENT));
             break;
-        //Àíãñòðåì
+        //Ангстрем
         case 1312:
-            key.gate = angstroms_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1311:
-            key.gate = angstroms_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1310:
-            key.gate = angstroms_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1309:
-            key.gate = angstroms_TO_yards(MEASUREMENT);
+            key.gate = meters_TO_yards(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1308:
-            key.gate = angstroms_TO_miles(MEASUREMENT);
+            key.gate = meters_TO_miles(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1307:
-            key.gate = angstroms_TO_arshins(MEASUREMENT);
+            key.gate = meters_TO_arshins(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1306:
-            key.gate = angstroms_TO_fathoms(MEASUREMENT);
+            key.gate = meters_TO_fathoms(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1305:
-            key.gate = angstroms_TO_kilometers(MEASUREMENT);
+            key.gate = meters_TO_kilometers(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1304:
-            key.gate = angstroms_TO_decimeters(MEASUREMENT);
+            key.gate = meters_TO_decimeters(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1303:
-            key.gate = angstroms_TO_centimeters(MEASUREMENT);
+            key.gate = meters_TO_centimeters(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1302:
             key.gate = angstroms_TO_meters(MEASUREMENT);
             break;
         case 1301:
-            key.gate = angstroms_TO_millimeter(MEASUREMENT);
+            key.gate = meters_TO_millimeters(angstroms_TO_meters(MEASUREMENT));
             break;
         case 1314:
-            key.gate = angstroms_TO_nauticalmiles(MEASUREMENT);
+            key.gate = meters_TO_nauticalmiles(angstroms_TO_meters(MEASUREMENT));
             break;
-        //Ìîðñêàÿ ìèëÿ
+        //Морская миля
         case 1413:
-            key.gate = nauticalmiles_TO_angstroms(MEASUREMENT);
+            key.gate = meters_TO_angstroms(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1412:
-            key.gate = nauticalmiles_TO_nanometers(MEASUREMENT);
+            key.gate = meters_TO_nanometers(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1411:
-            key.gate = nauticalmiles_TO_micrometers(MEASUREMENT);
+            key.gate = meters_TO_micrometers(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1410:
-            key.gate = nauticalmiles_TO_foots(MEASUREMENT);
+            key.gate = meters_TO_foots(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1409:
-            key.gate = nauticalmiles_TO_yards(MEASUREMENT);
+            key.gate = meters_TO_yards(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1408:
-            key.gate = nauticalmiles_TO_miles(MEASUREMENT);
+            key.gate = meters_TO_miles(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1407:
-            key.gate = nauticalmiles_TO_arshins(MEASUREMENT);
+            key.gate = meters_TO_arshins(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1406:
-            key.gate = nauticalmiles_TO_fathoms(MEASUREMENT);
+            key.gate = meters_TO_fathoms(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1405:
-            key.gate = nauticalmiles_TO_kilometers(MEASUREMENT);
+            key.gate = meters_TO_kilometers(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1404:
-            key.gate = nauticalmiles_TO_decimeters(MEASUREMENT);
+            key.gate = meters_TO_decimeters(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1403:
-            key.gate = nauticalmiles_TO_centimeters(MEASUREMENT);
+            key.gate = meters_TO_centimeters(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         case 1402:
             key.gate = nauticalmiles_TO_meters(MEASUREMENT);
             break;
         case 1401:
-            key.gate = nauticalmiles_TO_millimeters(MEASUREMENT);
+            key.gate = meters_TO_millimeters(nauticalmiles_TO_meters(MEASUREMENT));
             break;
         default:
             printf("Не введено значение конвертируемой величины, "
