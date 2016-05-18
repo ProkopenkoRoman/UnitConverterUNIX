@@ -2,7 +2,7 @@
 #include <math.h>
 #include"../Headers/total.h" /* Символ '../' - escape-символ - используется для перехода на один уровень выше;
                                 Этот символ используется столько раз, на сколько уровней нужно подняться; */
-                                
+
 
 double selectionswitchMass(double MEASUREMENT)
 {
@@ -25,7 +25,7 @@ double selectionswitchMass(double MEASUREMENT)
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%d", &key.input_choice);
     }
-    
+
     printf("Выберите величину, в которую Вы хотите конвертировать Вашу величину.\n"
            "Не нужно выбирать ту же величину, что Вы выбрали в качестве конвертируемой:\n"
            "1 - Грамм;\n"
@@ -36,7 +36,7 @@ double selectionswitchMass(double MEASUREMENT)
            "6 - Стоун;\n"
            "7 - Фунт;\n"
            "8 - Унция;\n"
-           "9 - Драхма;\n"
+           "9 - Драхма;\n\t"
            "10 - Гран;\n \t");
     //scanf("%d", &key.output_choice);
     key.output_choice = parsing_id(key.out);
@@ -46,288 +46,292 @@ double selectionswitchMass(double MEASUREMENT)
         scanf("%d", &key.output_choice);
     }
 
-       key.id = key.input_choice * 100 + key.output_choice;
-		
-    switch(key.id) {
-		//Грамм
-        case 102:
+    if(key.input_choice < 10 && key.output_choice < 10)
+		key.id = key.input_choice * 10 + key.output_choice;
+	if(key.input_choice == 10 && key.output_choice <= 10)
+		key.id = key.input_choice * 100 + key.output_choice;
+	if(key.input_choice < 10 && key.output_choice == 10)
+		key.id = key.input_choice * 100 + key.output_choice;
+
+    //Грамм
+        case 12:
             key.gate = Grams_TO_Kilograms(MEASUREMENT);
             break;
-        case 103:
-            key.gate = Grams_TO_Quintals(MEASUREMENT);
-            break;    
-        case 104:
-            key.gate = Grams_TO_Tonnes(MEASUREMENT);
-            break; 
-        case 105:
-            key.gate = Grams_TO_Carats(MEASUREMENT);
+        case 13:
+            key.gate = Kilograms_TO_Quintals(Grams_TO_Kilograms(MEASUREMENT));
             break;
-        case 106:
-            key.gate = Grams_TO_Stones(MEASUREMENT);
+        case 14:
+            key.gate = Kilograms_TO_Tonnes(Grams_TO_Kilograms(MEASUREMENT));
             break;
-        case 107:
-            key.gate = Grams_TO_Funts(MEASUREMENT);
+        case 15:
+            key.gate = Kilograms_TO_Carats(Grams_TO_Kilograms(MEASUREMENT));
             break;
-        case 108:
-            key.gate = Grams_TO_Ounces(MEASUREMENT);
+        case 16:
+            key.gate = Kilograms_TO_Stones(Grams_TO_Kilograms(MEASUREMENT));
             break;
-        case 109:
-            key.gate = Grams_TO_Drachmas(MEASUREMENT);
-            break;  
+        case 17:
+            key.gate = Kilograms_TO_Funts(Grams_TO_Kilograms(MEASUREMENT));
+            break;
+        case 18:
+            key.gate = Kilograms_TO_Ounces(Grams_TO_Kilograms(MEASUREMENT));
+            break;
+        case 19:
+            key.gate = Kilograms_TO_Drachmas(Grams_TO_Kilograms(MEASUREMENT));
+            break;
         case 110:
-            key.gate = Grams_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Grams_TO_Kilograms(MEASUREMENT));
             break;
         //Килограмм
-        case 201:
+        case 21:
             key.gate = Kilograms_TO_Grams(MEASUREMENT);
             break;
-        case 203:
+        case 23:
             key.gate = Kilograms_TO_Quintals(MEASUREMENT);
             break;
-        case 204:
+        case 24:
             key.gate = Kilograms_TO_Tonnes(MEASUREMENT);
-            break; 
-        case 205:
+            break;
+        case 25:
             key.gate = Kilograms_TO_Carats(MEASUREMENT);
             break;
-        case 206:
+        case 26:
             key.gate = Kilograms_TO_Stones(MEASUREMENT);
             break;
-        case 207:
+        case 27:
             key.gate = Kilograms_TO_Funts(MEASUREMENT);
             break;
-        case 208:
+        case 28:
             key.gate = Kilograms_TO_Ounces(MEASUREMENT);
             break;
-        case 209:
+        case 29:
             key.gate = Kilograms_TO_Drachmas(MEASUREMENT);
             break;
         case 210:
             key.gate = Kilograms_TO_Grains(MEASUREMENT);
             break;
-        //Центнер   
-        case 302:
+        //Центнер
+        case 32:
             key.gate = Quintals_TO_Kilograms(MEASUREMENT);
             break;
-        case 301:
-            key.gate = Quintals_TO_Grams(MEASUREMENT);
+        case 31:
+            key.gate = Kilograms_TO_Grams(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 304:
-            key.gate = Quintals_TO_Tonnes(MEASUREMENT);
+        case 34:
+            key.gate = Kilograms_TO_Tonnes(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 305:
-            key.gate = Quintals_TO_Carats(MEASUREMENT);
+        case 35:
+            key.gate = Kilograms_TO_Carats(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 306:
-            key.gate = Quintals_TO_Stones(MEASUREMENT);
+        case 36:
+            key.gate = Kilograms_TO_Stones(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 307:
-            key.gate = Quintals_TO_Funts(MEASUREMENT);
+        case 37:
+            key.gate = Kilograms_TO_Funts(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 308:
-            key.gate = Quintals_TO_Ounces(MEASUREMENT);
+        case 38:
+            key.gate = Kilograms_TO_Ounces(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        case 309:
-            key.gate = Quintals_TO_Drachmas(MEASUREMENT);
+        case 39:
+            key.gate = Kilograms_TO_Drachmas(Quintals_TO_Kilograms(MEASUREMENT));
             break;
         case 310:
-            key.gate = Quintals_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Quintals_TO_Kilograms(MEASUREMENT));
             break;
-        //Тонна  
-        case 403:
-            key.gate = Tonnes_TO_Quintals(MEASUREMENT);
+        //Тонна
+        case 43:
+            key.gate = Kilograms_TO_Quintals(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 402:
+        case 42:
             key.gate = Tonnes_TO_Kilograms(MEASUREMENT);
             break;
-        case 401:
-            key.gate = Tonnes_TO_Grams(MEASUREMENT);
+        case 41:
+            key.gate = Kilograms_TO_Grams(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 405:
-            key.gate = Tonnes_TO_Carat(MEASUREMENT);
+        case 45:
+            key.gate = Kilograms_TO_Carats(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 406:
-            key.gate = Tonnes_TO_Stone(MEASUREMENT);
+        case 46:
+            key.gate = Kilograms_TO_Stones(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 407:
-            key.gate = Tonnes_TO_Funts(MEASUREMENT);
+        case 47:
+            key.gate = Kilograms_TO_Funts(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 408:
-            key.gate = Tonnes_TO_Ounces(MEASUREMENT);
+        case 48:
+            key.gate = Kilograms_TO_Ounces(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        case 409:
-            key.gate = Tonnes_TO_Drachmas(MEASUREMENT);
+        case 49:
+            key.gate = Kilograms_TO_Drachmas(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
         case 410:
-            key.gate = Tonnes_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Tonnes_TO_Kilograms(MEASUREMENT));
             break;
-        //Карат 
-        case 504:
-            key.gate = Carats_TO_Tonnes(MEASUREMENT);
+        //Карат
+        case 54:
+            key.gate = Kilograms_TO_Tonnes(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 503:
-            key.gate = Carats_TO_Quintals(MEASUREMENT);
+        case 53:
+            key.gate = Kilograms_TO_Quintals(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 502:
+        case 52:
             key.gate = Carats_TO_Kilograms(MEASUREMENT);
             break;
-        case 501:
-            key.gate = Carats_TO_Grams(MEASUREMENT);
+        case 51:
+            key.gate = Kilograms_TO_Grams(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 506:
-            key.gate = Carats_TO_Stones(MEASUREMENT);
+        case 56:
+            key.gate = Kilograms_TO_Stones(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 507:
-            key.gate = Carats_TO_Funts(MEASUREMENT);
+        case 57:
+            key.gate = Kilograms_TO_Funts(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 508:
-            key.gate = Carats_TO_Ounces(MEASUREMENT);
+        case 58:
+            key.gate = Kilograms_TO_Ounces(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        case 509:
-            key.gate = Carats_TO_Drachmas(MEASUREMENT);
+        case 59:
+            key.gate = Kilograms_TO_Drachmas(Carats_TO_Kilograms(MEASUREMENT));
             break;
         case 510:
-            key.gate = Carats_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Carats_TO_Kilograms(MEASUREMENT));
             break;
-        //Стоун  
-        case 605:
-            key.gate = Stones_TO_Carats(MEASUREMENT);
+        //Стоун
+        case 65:
+            key.gate = Kilograms_TO_Carats(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 604:
-            key.gate = Stones_TO_Tonnes(MEASUREMENT);
+        case 64:
+            key.gate = Kilograms_TO_Tonnes(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 603:
-            key.gate = Stones_TO_Quintals(MEASUREMENT);
+        case 63:
+            key.gate = Kilograms_TO_Quintals(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 602:
+        case 62:
             key.gate = Stones_TO_Kilograms(MEASUREMENT);
             break;
-        case 601:
-            key.gate = Stones_TO_Grams(MEASUREMENT);
+        case 61:
+            key.gate = Kilograms_TO_Grams(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 607:
-            key.gate = Stones_TO_Funts(MEASUREMENT);
+        case 67:
+            key.gate = Kilograms_TO_Funts(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 608:
-            key.gate = Stones_TO_Ounces(MEASUREMENT);
+        case 68:
+            key.gate = Kilograms_TO_Ounces(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        case 609:
-            key.gate = Stones_TO_Drachmas(MEASUREMENT);
+        case 69:
+            key.gate = Kilograms_TO_Drachmas(Stones_TO_Kilograms(MEASUREMENT));
             break;
         case 610:
-            key.gate = Stones_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Stones_TO_Kilograms(MEASUREMENT));
             break;
-        //Фунт   
-        case 706:
-            key.gate = Funts_TO_Stones(MEASUREMENT);
+        //Фунт
+        case 76:
+            key.gate = Kilograms_TO_Stones(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 705:
-            key.gate = Funts_TO_Carats(MEASUREMENT);
+        case 75:
+            key.gate = Kilograms_TO_Carats(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 704:
-            key.gate = Funts_TO_Tonnes(MEASUREMENT);
+        case 74:
+            key.gate = Kilograms_TO_Tonnes(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 703:
-            key.gate = Funts_TO_Quintals(MEASUREMENT);
+        case 73:
+            key.gate = Kilograms_TO_Quintals(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 702:
+        case 72:
             key.gate = Funts_TO_Kilograms(MEASUREMENT);
             break;
-        case 701:
-            key.gate = Funts_TO_Grams(MEASUREMENT);
+        case 71:
+            key.gate = Kilograms_TO_Grams(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 708:
-            key.gate = Funts_TO_Ounces(MEASUREMENT);
+        case 78:
+            key.gate = Kilograms_TO_Ounces(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        case 709:
-            key.gate = Funts_TO_Drachmas(MEASUREMENT);
+        case 79:
+            key.gate = Kilograms_TO_Drachmas(Funts_TO_Kilograms(MEASUREMENT));
             break;
         case 710:
-            key.gate = Funts_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Funts_TO_Kilograms(MEASUREMENT));
             break;
-        //Унция    
-        case 807:
-            key.gate = Ounces_TO_Funts(MEASUREMENT);
+        //Унция
+        case 87:
+            key.gate = Kilograms_TO_Funts(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 806:
-            key.gate = Ounces_TO_Stones(MEASUREMENT);
+        case 86:
+            key.gate = Kilograms_TO_Stones(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 805:
-            key.gate = Ounces_TO_Carats(MEASUREMENT);
+        case 85:
+            key.gate = Kilograms_TO_Carats(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 804:
-            key.gate = Ounces_TO_Tonnes(MEASUREMENT);
+        case 84:
+            key.gate = Kilograms_TO_Tonnes(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 803:
-            key.gate = Ounces_TO_Quintals(MEASUREMENT);
+        case 83:
+            key.gate = Kilograms_TO_Quintals(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 802:
+        case 82:
             key.gate = Ounces_TO_Kilograms(MEASUREMENT);
             break;
-        case 801:
-            key.gate = Ounces_TO_Grams(MEASUREMENT);
+        case 81:
+            key.gate = Kilograms_TO_Grams(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        case 809:
-            key.gate = Ounces_TO_Drachmas(MEASUREMENT);
+        case 89:
+            key.gate = Kilograms_TO_Drachmas(Ounces_TO_Kilograms(MEASUREMENT));
             break;
         case 810:
-            key.gate = Ounces_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Ounces_TO_Kilograms(MEASUREMENT));
             break;
-        //Драхма    
-        case 908:
-            key.gate = Drachmas_TO_Ounces(MEASUREMENT);
+        //Драхма
+        case 98:
+            key.gate = Kilograms_TO_Ounces(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 907:
-            key.gate = Drachmas_TO_Funts(MEASUREMENT);
+        case 97:
+            key.gate = Kilograms_TO_Funts(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 906:
-            key.gate = Drachmas_TO_Stones(MEASUREMENT);
+        case 96:
+            key.gate = Kilograms_TO_Stones(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 905:
-            key.gate = Drachmas_TO_Carats(MEASUREMENT);
+        case 95:
+            key.gate = Kilograms_TO_Carats(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 904:
-            key.gate = Drachmas_TO_Tonnes(MEASUREMENT);
+        case 94:
+            key.gate = Kilograms_TO_Tonnes(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 903:
-            key.gate = Drachmas_TO_Quintals(MEASUREMENT);
+        case 93:
+            key.gate = Kilograms_TO_Quintals(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        case 902:
+        case 92:
             key.gate = Drachmas_TO_Kilograms(MEASUREMENT);
             break;
-        case 901:
-            key.gate = Drachmas_TO_Grams(MEASUREMENT);
+        case 91:
+            key.gate = Kilograms_TO_Grams(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
         case 910:
-            key.gate = Drachmas_TO_Grains(MEASUREMENT);
+            key.gate = Kilograms_TO_Grains(Drachmas_TO_Kilograms(MEASUREMENT));
             break;
-        //Гран   
+        //Гран
         case 1009:
-            key.gate = Grains_TO_Drachma(MEASUREMENT);
+            key.gate = Kilograms_TO_Drachmas(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1008:
-            key.gate = Grains_TO_Ounce(MEASUREMENT);
+            key.gate = Kilograms_TO_Ounces(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1007:
-            key.gate = Grains_TO_Funts(MEASUREMENT);
+            key.gate = Kilograms_TO_Funts(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1006:
-            key.gate = Grains_TO_Stones(MEASUREMENT);
+            key.gate = Kilograms_TO_Stones(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1005:
-            key.gate = Grains_TO_Carats(MEASUREMENT);
+            key.gate = Kilograms_TO_Carats(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1004:
-            key.gate = Grains_TO_Tonnes(MEASUREMENT);
+            key.gate = Kilograms_TO_Tonnes(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1003:
-            key.gate = Grains_TO_Quintals(MEASUREMENT);
+            key.gate = Kilograms_TO_Quintals(Grains_TO_Kilograms(MEASUREMENT));
             break;
         case 1002:
             key.gate = Grains_TO_Kilograms(MEASUREMENT);
             break;
         case 1001:
-            key.gate = Grains_TO_Grams(MEASUREMENT);
+            key.gate = Kilograms_TO_Grams(Grains_TO_Kilograms(MEASUREMENT));
             break;
         default:
             printf("Не введено значение конвертируемой величины, "
@@ -336,7 +340,4 @@ double selectionswitchMass(double MEASUREMENT)
     }
 
     return key.gate;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                                                                                                                                       
+}
