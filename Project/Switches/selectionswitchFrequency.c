@@ -33,7 +33,7 @@ double selectionswitchFrequency(double MEASUREMENT)
            "7 - Радиан на секунду;\n\t");
     key.output_choice = parsing_id(key.out);
     //scanf("%d", &key.output_choice);
-    while(key.output_choice == key.input_choice || key.input_choice >= 8 || key.input_choice == 0 )  {
+    while(key.output_choice == key.input_choice || key.output_choice >= 8 || key.output_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
         key.output_choice = parsing_id(key.out);
