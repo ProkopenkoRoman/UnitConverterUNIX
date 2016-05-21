@@ -21,7 +21,7 @@ double selectionswitchTemperature(double MEASUREMENT)
     key.input_choice = parsing_id(key.in);
     while(key.input_choice > 8|| key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
-        scanf("%d", &key.input_choice);
+        key.input_choice = parsing_id(key.in);
     }
 
     printf("Выберите величину, в которую Вы хотите конвертировать Вашу величину.\n"
@@ -39,14 +39,14 @@ double selectionswitchTemperature(double MEASUREMENT)
     while(key.output_choice == key.input_choice || key.input_choice > 8 || key.input_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
-        scanf("%d", &key.output_choice);
+        key.output_choice = parsing_id(key.out);
     }
 
-    if(input_choice < 10 && output_choice < 10)
+    if(key.input_choice < 10 && key.output_choice < 10)
 		key.id = key.input_choice * 10 + key.output_choice;
-	if(input_choice == 10 && output_choice <= 10)
+	if(key.input_choice == 10 && key.output_choice <= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
-	if(input_choice < 10 && output_choice == 10)
+	if(key.input_choice < 10 && key.output_choice == 10)
 		key.id = key.input_choice * 100 + key.output_choice;
 
     switch(key.id) {
@@ -77,7 +77,7 @@ double selectionswitchTemperature(double MEASUREMENT)
             key.gate = Fahrenheits_TO_Kelvins(MEASUREMENT);
             break;
         case 21:
-            key.gate = Kelvins_TO_Celsiuss(Fahrenheits_TO_Kelvins(MEASUREMENT));
+            key.gate = Kelvins_TO_Celsius(Fahrenheits_TO_Kelvins(MEASUREMENT));
             break;
         case 24:
             key.gate = Kelvins_TO_Reaumurs(Fahrenheits_TO_Kelvins(MEASUREMENT));

@@ -25,7 +25,7 @@ double selectionswitchPression(double MEASUREMENT)
     key.input_choice = parsing_id(key.in);
     while(key.input_choice > 12 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
-        scanf("%d", &key.input_choice);
+        key.input_choice = parsing_id(key.in);
     }
 
     printf("Выберите величину, в которую Вы хотите конвертировать Вашу величину.\n"
@@ -47,7 +47,7 @@ double selectionswitchPression(double MEASUREMENT)
     while(key.output_choice == key.input_choice || key.input_choice > 12 || key.input_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
-        scanf("%d", &key.output_choice);
+        key.output_choice = parsing_id(key.out);
     }
 
    key.id = key.input_choice * 100 + key.output_choice;
