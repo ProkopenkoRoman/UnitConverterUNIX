@@ -33,9 +33,8 @@ int parsing_id(char *MEASUREMENT)
 	scanf("%s", MEASUREMENT);
 
 	for(i = 0; i < strlen(MEASUREMENT); i++) {
-        while((MEASUREMENT[i] >= 0x30 && MEASUREMENT[i] <= 0x39) == 0) {
-            printf("\n Вы сделали не коректный выбор. Сделайте корректный выбор: \n\t");
-			scanf("%s", MEASUREMENT);
+        if((MEASUREMENT[i] >= 0x30 && MEASUREMENT[i] <= 0x39) == 0) {
+			return 0;
         }
 	}
 
