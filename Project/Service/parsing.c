@@ -30,8 +30,6 @@ int parsing_id(char *MEASUREMENT)
 	double res;
 	int i = 0;
 
-	scanf("%s", MEASUREMENT);
-
 	for(i = 0; i < strlen(MEASUREMENT); i++) {
         if((MEASUREMENT[i] >= 0x30 && MEASUREMENT[i] <= 0x39) == 0) {
 			return 0;
