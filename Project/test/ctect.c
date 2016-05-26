@@ -1,13 +1,28 @@
-# include "ctest.h"
+#include "ctest.h"
 #include "../Headers/total.h" 
 
-const float a = 567.391;
+const float a = ;
 
-CTEST(total, id_12) {    
-    // When
-    //float  res_a = millimeters_TO_meters(a);
-    // Then
-    const float s = 0.567391;
-       
-    ASSERT_DBL_NEAR(s, s);
+CTEST(total, parsing_ID1) {    
+    int  res = parsing_id("sd5gf48rtdv87");
+    int s = 0;
+    ASSERT_DBL_NEAR(s, res);
+}
+
+CTEST(total, parsing_ID2) {    
+    int  res = parsing_id("......48");
+    int s = 0;
+    ASSERT_DBL_NEAR(s, res);
+}
+
+CTEST(total, parsing_ID3) {    
+    int  res = parsing_id("4854.....");
+    int s = 0;
+    ASSERT_DBL_NEAR(s, res);
+}
+
+CTEST(total, parsing_ID4) {    
+    int  res = parsing_id("5245");
+    int s = 5245;
+    ASSERT_DBL_NEAR(s, res);
 }
