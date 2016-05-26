@@ -103,3 +103,11 @@ $(FLAG)/selectionswitchTemperature.o: Switches/selectionswitchTemperature.c
 $(FLAG)/selectionswitchTime.o: Switches/selectionswitchTime.c
 		gcc -c Switches/selectionswitchTime.c -o $(FLAG)/selectionswitchTime.o
 
+test: $(FLAG)/ctect.o $(FLAG)/main.o $(FLAG)/parsing.o
+		gcc -o Test -lm $^
+
+$(FLAG)/ctect.o: test/ctect.c
+		gcc -c test/ctect.c -o $(FLAG)/ctect.o
+	
+$(FLAG)/main.o: test/main.c
+		gcc -c test/main.c -o $(FLAG)/main.o
