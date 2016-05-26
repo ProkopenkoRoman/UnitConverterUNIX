@@ -14,9 +14,11 @@ double selectionswitchSpeed(double MEASUREMENT)
            "4 - Махи;\n"
            "5 - Мили в час;\n \t");
     //scanf("%d", &key.input_choice);
+    scanf("%s", key.in);
     key.input_choice = parsing_id(key.in);
     while(key.input_choice > 5 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
+        scanf("%s", key.in);
         key.input_choice = parsing_id(key.in);
     }
 
@@ -28,10 +30,12 @@ double selectionswitchSpeed(double MEASUREMENT)
            "4 - Махи;\n"
            "5 - Мили в час;\n \t");
     //scanf("%d", &key.output_choice);
+    scanf("%s", key.out);
     key.output_choice = parsing_id(key.out);
     while(key.output_choice == key.input_choice || key.output_choice > 5 || key.output_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
+		scanf("%s", key.out);
         key.output_choice = parsing_id(key.out);
     }
 
