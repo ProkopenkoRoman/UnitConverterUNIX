@@ -1,7 +1,7 @@
 #include "ctest.h"
 #include "../Headers/total.h" 
 
-const float a = ;
+const float a = 5;
 
 CTEST(total, parsing_ID1) {    
     int  res = parsing_id("sd5gf48rtdv87");
