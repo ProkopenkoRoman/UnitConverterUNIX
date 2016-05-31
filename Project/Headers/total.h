@@ -31,8 +31,15 @@ double selectionswitchAmount(double MEASUREMENT);
 double selectionswitchLength(double MEASUREMENT);
 //КОЛЯ
 double selectionswitchData(double MEASUREMENT);
+double selectionswitchRadiation(double MEASUREMENT);
+double selectionswitchResistance(double MEASUREMENT);
+
 
 //ПАХОМ
+double selectionswitchStrength(double MEASUREMENT);
+double selectionswitchArea(double MEASUREMENT);
+double selectionswitchAmpere(double MEASUREMENT);
+double selectionswitchDensity(double MEASUREMENT);
 
 //РОМА
 double selectionswitchPower(double MEASUREMENT);
@@ -47,8 +54,52 @@ double selectionswitchTime(double MEASUREMENT);
 double selectionswitchEnergy(double MEASUREMENT);
 
 
-
-
+//сила тока
+double Ampere2kAmpere(double AMPERE);
+double kAmpere2Ampere(double AMPERE);
+double Ampere2mAmpere(double AMPERE);
+double mAmpere2Ampere(double AMPERE);
+double Ampere2mcAmpere(double AMPERE);
+double mcAmpere2Ampere(double AMPERE);
+double Ampere2nAmpere(double AMPERE);
+double nAmpere2Ampere(double AMPERE);
+//плотность
+double KilogramsPerCubicMeter2KilogramsPerCubicSantimeter(double DENSITY);
+double KilogramsPerCubicSantimeter2KilogramsPerCubicMeter(double DENSITY);
+double KilogramsPerCubicMeter2GramsPerCubicMeter(double DENSITY);
+double GramsPerCubicSantimeter2KilogramsPerCubicMeter(double DENSITY);
+double KilogramsPerCubicMeter2GramsPerCubicSantimeter(double DENSITY);
+double GramsPerCubicSantimeter2KilogramsPerCubicMeter(double DENSITY);
+double KilogramsPerCubicMeter2GramsPerCubicMillimeter(double DENSITY);
+double GramsPerCubicMeter2KilogramsPerCubicMeter(double DENSITY);
+double KilogramsPerCubicMeter2MilligramsPerCubicMeter(double DENSITY);
+//площадь
+double SquareMeter2Hectare(double AREA);
+double Hectare2SquareMeter(double AREA);
+double SquareMeter2Ar(double AREA);
+double Ar2SquareMeter(double AREA);
+double SquarekMeter2SquareMeter(double AREA);
+double SquareMeter2SquarekMeter(double AREA);
+double SquareMeter2Acr(double AREA);
+double Acr2SquareMeter(double AREA);
+double SquaresMeter2SquareMeter(double AREA);
+double SquareMeter2SquaresMeter(double AREA);
+double SquareInch2SquareMeter(double AREA);
+double SquareMeter2SquareInch(double AREA);
+double SquaremMeter2SquareMeter(double AREA);
+double SquareMeter2SquaremMeter(double AREA);
+//сила
+double Newton2kNewton(double STRENGTH);
+double Newton2mNewton(double STRENGTH);
+double Newton2MkNewton(double STRENGTH);
+double Newton2kgsNewton(double STRENGTH);
+double Newton2fsNewton(double STRENGTH);
+double kNewton2Newton(double STRENGTH);
+double mNewton2Newton(double STRENGTH);
+double MgNewton2Newton(double STRENGTH);
+double MkNewton2Newton(double STRENGTH);
+double kgsNewton2Newton(double STRENGTH);
+double fsNewton2Newton(double STRENGTH);
 
 // Ïðîòîòèïû ðàáî÷èõ ôóíêöèé;
 double adjacentValuesUpward(double DATA);
