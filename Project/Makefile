@@ -2,20 +2,20 @@
 FLAG = ./obj
 # Main.o parsing.o convert.o Length.o Amount.o Angle.o Area.o Data.o Electric_charge.o Energy.o Frequency.o Mass.o Power.o Pression.o QuantityOfSubstance.o Speed.o Strength.o Temperature.o Time.o selectionswitchAmount.o selectionswitchAngle.o selectionswitchData.o selectionswitchEnergy.o selectionswitchFrequency.o selectionswitchLength.o selectionswitchMass.o selectionswitchPower.o selectionswitchPression.o selectionswitchQuantityOfSubstance.o selectionswitchSpeed.o selectionswitchTemperature.o selectionswitchTime.o 
 
-Convert: $(FLAG)/Main.o $(FLAG)/parsing.o $(FLAG)/convert.o $(FLAG)/Length.o $(FLAG)/Amount.o $(FLAG)/Angle.o $(FLAG)/Area.o $(FLAG)/Data.o $(FLAG)/Electric_charge.o $(FLAG)/Energy.o $(FLAG)/Frequency.o $(FLAG)/Mass.o $(FLAG)/Power.o $(FLAG)/Pression.o $(FLAG)/QuantityOfSubstance.o $(FLAG)/Speed.o $(FLAG)/Strength.o $(FLAG)/Temperature.o $(FLAG)/Time.o $(FLAG)/selectionswitchAmount.o $(FLAG)/selectionswitchAngle.o $(FLAG)/selectionswitchData.o $(FLAG)/selectionswitchEnergy.o $(FLAG)/selectionswitchFrequency.o $(FLAG)/selectionswitchLength.o $(FLAG)/selectionswitchMass.o $(FLAG)/selectionswitchPower.o $(FLAG)/selectionswitchPression.o $(FLAG)/selectionswitchQuantityOfSubstance.o $(FLAG)/selectionswitchSpeed.o $(FLAG)/selectionswitchTemperature.o $(FLAG)/selectionswitchTime.o 
+Convert: $(FLAG)/Main.o $(FLAG)/parsing.o $(FLAG)/convert.o $(FLAG)/Length.o $(FLAG)/Amount.o $(FLAG)/Angle.o $(FLAG)/Area.o $(FLAG)/Data.o $(FLAG)/Electric_charge.o $(FLAG)/Energy.o $(FLAG)/Frequency.o $(FLAG)/Mass.o $(FLAG)/Power.o $(FLAG)/Pression.o $(FLAG)/QuantityOfSubstance.o $(FLAG)/Speed.o $(FLAG)/Strength.o $(FLAG)/Temperature.o $(FLAG)/Time.o $(FLAG)/Resistance.o $(FLAG)/Radiation.o $(FLAG)/selectionswitchAmount.o $(FLAG)/selectionswitchAngle.o $(FLAG)/selectionswitchData.o $(FLAG)/selectionswitchEnergy.o $(FLAG)/selectionswitchFrequency.o $(FLAG)/selectionswitchLength.o $(FLAG)/selectionswitchMass.o $(FLAG)/selectionswitchPower.o $(FLAG)/selectionswitchPression.o $(FLAG)/selectionswitchQuantityOfSubstance.o $(FLAG)/selectionswitchSpeed.o $(FLAG)/selectionswitchTemperature.o $(FLAG)/selectionswitchTime.o 
  
 # parsing.o convert.o Length.o Amount.o Angle.o Area.o Data.o Electric_charge.o Energy.o Frequency.o Mass.o Power.o Pression.o QuantityOfSubstance.o Speed.o Strength.o Temperature.o Time.o selectionswitchAmount.o selectionswitchAngle.o selectionswitchData.o selectionswitchEnergy.o selectionswitchFrequency.o selectionswitchLength.o selectionswitchMass.o selectionswitchPower.o selectionswitchPression.o selectionswitchQuantityOfSubstance.o selectionswitchSpeed.o selectionswitchTemperature.o selectionswitchTime.o 
 		gcc -o Convert -lm $^
  
 $(FLAG)/Main.o: Main.c
 		gcc -c Main.c -o $(FLAG)/Main.o
-		
+		#сервис
 $(FLAG)/parsing.o: Service/parsing.c
 		gcc -c Service/parsing.c -o $(FLAG)/parsing.o
 		
 $(FLAG)/convert.o: Service/convert.c
 		gcc -c Service/convert.c -o $(FLAG)/convert.o
-
+	#модули
 $(FLAG)/Length.o: Modules/Length.c
 		gcc -c Modules/Length.c -o $(FLAG)/Length.o
 
@@ -49,6 +49,12 @@ $(FLAG)/Power.o: Modules/Power.c
 $(FLAG)/Pression.o: Modules/Pression.c
 		gcc -c Modules/Pression.c -o $(FLAG)/Pression.o
 		
+$(FLAG)/Resistance.o: Modules/Resistance.c
+		gcc -c Modules/Resistance.c -o $(FLAG)/Resistance.o
+		
+$(FLAG)/Radiation.o: Modules/Radiation.c
+		gcc -c Modules/Radiation.c -o $(FLAG)/Radiation.o
+	#свитчи	
 $(FLAG)/QuantityOfSubstance.o: Modules/QuantityOfSubstance.c
 		gcc -c Modules/QuantityOfSubstance.c -o $(FLAG)/QuantityOfSubstance.o
 
@@ -102,7 +108,14 @@ $(FLAG)/selectionswitchTemperature.o: Switches/selectionswitchTemperature.c
 		
 $(FLAG)/selectionswitchTime.o: Switches/selectionswitchTime.c
 		gcc -c Switches/selectionswitchTime.c -o $(FLAG)/selectionswitchTime.o
+		
+$(FLAG)/selectionswitchResistance.o: Switches/selectionswitchResistance.c
+		gcc -c Switches/selectionswitchResistance.c -o $(FLAG)/selectionswitchResistance.o
+		
+$(FLAG)/selectionswitchRadiation.o: Switches/selectionswitchRadiation.c
+		gcc -c Switches/selectionswitchRadiation.c -o $(FLAG)/selectionswitchRadiation.o
 
+# тесты
 test: $(FLAG)/ctect.o $(FLAG)/main.o $(FLAG)/parsing.o
 		gcc -o Test -lm $^
 
