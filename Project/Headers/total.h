@@ -82,6 +82,24 @@ double exabytesTobits(double DATA);
 double bitsTozetabytes(double DATA);
 double zetabytesTobits(double DATA);
 
+// RADIATION
+double PTOmP(double RADIATION);
+double PTOuP(double RADIATION);
+double PTOKlperKg(double RADIATION);
+double mPTOP(double RADIATION);
+double uPTOP(double RADIATION);
+double KlperKgTOP(double RADIATION);
+
+// RESISTANCE
+double OmTOmOm(double RESISTANCE);
+double OmTOuOm(double RESISTANCE);
+double OmTOVoltperAmper(double RESISTANCE);
+double OmTOSimens(double RESISTANCE);
+double mOmTOOm(double RESISTANCE);
+double uOmTOOm(double RESISTANCE);
+double VoltperAmperTOOm(double RESISTANCE);
+double SimensTOOm(double RESISTANCE);
+
 //TIME
  double nsec_to_min ( double TIME);
  double mksec_to_min ( double TIME);
