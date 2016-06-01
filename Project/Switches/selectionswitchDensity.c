@@ -55,7 +55,7 @@ double selectionswitchDensity(double MEASUREMENT)
             key.gate = KilogramsPerCubicMeter2MilligramsPerCubicMeter(MEASUREMENT);
             break;
         case 21:
-            key.gate = KilogramsPerCubicSantimeter2KilogramsPerCubicMeter(MEASUREMENT));
+            key.gate = KilogramsPerCubicSantimeter2KilogramsPerCubicMeter(MEASUREMENT);
             break;
         case 23:
             key.gate = KilogramsPerCubicMeter2GramsPerCubicMeter(KilogramsPerCubicSantimeter2KilogramsPerCubicMeter(MEASUREMENT));

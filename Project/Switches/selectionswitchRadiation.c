@@ -15,7 +15,7 @@ double selectionswitchRadiation(double MEASUREMENT)
     scanf("%s", key.in);
     key.input_choice = parsing_id(key.in);
 
-    while(key.input_choice >= 5 || key.input_choice == 0) {
+    while(key.input_choice > 4 || key.input_choice == 0) {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин. \nПожалуйста, сделайте корректный выбор\n\t");
         scanf("%s", key.in);
 		key.input_choice = parsing_id(key.in);
@@ -29,10 +29,10 @@ double selectionswitchRadiation(double MEASUREMENT)
            "4 - Рентген;\n \t");
     scanf("%s", key.out);
     key.output_choice = parsing_id(key.out);
-    while(key.output_choice == key.input_choice || key.input_choice >= 5 || key.input_choice == 0 )  {
+    while(key.output_choice == key.input_choice || key.output_choice > 4 || key.output_choice == 0 )  {
         fprintf(stderr, "\nВы выбрали величину, которой нет в списке доступных величин, \nили Вы пытаетесь конвертировать "
                 "одну и ту же величину. \nПожалуйста, сделайте корректный выбор\n\t");
-         scanf("%s", key.out);
+        scanf("%s", key.out);
         key.output_choice = parsing_id(key.out);
     }
 
