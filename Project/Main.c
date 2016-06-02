@@ -9,7 +9,7 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     MainParameters head;
-    head.version = 1.54;
+    head.version = 1.72;
     head.like_to_continue = 'y';
 
     printf("Unit Converter. Версия %.2f \n\n", head.version);
