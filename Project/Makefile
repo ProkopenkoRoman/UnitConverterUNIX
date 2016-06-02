@@ -55,14 +55,14 @@ $(FLAG)/Resistance.o: Modules/Resistance.c
 $(FLAG)/Radiation.o: Modules/Radiation.c
 		gcc -c Modules/Radiation.c -o $(FLAG)/Radiation.o
 ##
-$(FLAG)/Strength.o: Modules/Strength.c
-		gcc -c Modules/Strength.c -o $(FLAG)/Strength.o
+#$(FLAG)/Strength.o: Modules/Strength.c
+#		gcc -c Modules/Strength.c -o $(FLAG)/Strength.o
 
-$(FLAG)/Ampere.o: Modules/Ampere.c
-		gcc -c Modules/Ampere.c -o $(FLAG)/Ampere.o
+#$(FLAG)/Ampere.o: Modules/Ampere.c
+#		gcc -c Modules/Ampere.c -o $(FLAG)/Ampere.o
 
-$(FLAG)/Density.o: Modules/Density.c
-		gcc -c Modules/Density.c -o $(FLAG)/Density.o
+#$(FLAG)/Density.o: Modules/Density.c
+#		gcc -c Modules/Density.c -o $(FLAG)/Density.o
 
 	#свитчи	
 $(FLAG)/QuantityOfSubstance.o: Modules/QuantityOfSubstance.c
@@ -128,14 +128,14 @@ $(FLAG)/selectionswitchRadiation.o: Switches/selectionswitchRadiation.c
 $(FLAG)/selectionswitchArea.o: Switches/selectionswitchArea.c
 		gcc -c Switches/selectionswitchArea.c -o $(FLAG)/selectionswitchArea.o
 ##
-$(FLAG)/selectionswitchStrength.o: Switches/selectionswitchStrength.c
-		gcc -c Switches/selectionswitchStrength.c -o $(FLAG)/selectionswitchStrength.o
+#$(FLAG)/selectionswitchStrength.o: Switches/selectionswitchStrength.c
+#		gcc -c Switches/selectionswitchStrength.c -o $(FLAG)/selectionswitchStrength.o
 		
-$(FLAG)/selectionswitchAmpere.o: Switches/selectionswitchAmpere.c
-		gcc -c Switches/selectionswitchAmpere.c -o $(FLAG)/selectionswitchAmpere.o
+#$(FLAG)/selectionswitchAmpere.o: Switches/selectionswitchAmpere.c
+#		gcc -c Switches/selectionswitchAmpere.c -o $(FLAG)/selectionswitchAmpere.o
 		
-$(FLAG)/selectionswitchDensity.o: Switches/selectionswitchDensity.c
-		gcc -c Switches/selectionswitchDensity.c -o $(FLAG)/selectionswitchDensity.o
+#$(FLAG)/selectionswitchDensity.o: Switches/selectionswitchDensity.c
+#		gcc -c Switches/selectionswitchDensity.c -o $(FLAG)/selectionswitchDensity.o
 
 # тесты
 test: $(FLAG)/ctect.o $(FLAG)/main.o $(FLAG)/parsing.o $(FLAG)/Length.o
