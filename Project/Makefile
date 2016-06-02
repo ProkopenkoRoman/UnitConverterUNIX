@@ -135,7 +135,7 @@ $(FLAG)/selectionswitchArea.o: Switches/selectionswitchArea.c
 #		gcc -c Switches/selectionswitchDensity.c -o $(FLAG)/selectionswitchDensity.o
 
 # тесты
-test: $(FLAG)/ctect.o $(FLAG)/main.o $(FLAG)/parsing.o $(FLAG)/Length.o
+test: $(FLAG)/ctect.o $(FLAG)/main.o $(FLAG)/parsing.o $(FLAG)/Energy.o $(FLAG)/Frequency.o $(FLAG)/Angle.o $(FLAG)/Temperature.o $(FLAG)/Resistance.o $(FLAG)/Speed.o $(FLAG)/Radiation.o $(FLAG)/Amount.o $(FLAG)/Power.o $(FLAG)/Mass.o $(FLAG)/QuantityOfSubstance.o $(FLAG)/Length.o $(FLAG)/Data.o $(FLAG)/Pression.o $(FLAG)/Time.o
 		gcc -o Test -lm $^
 
 $(FLAG)/ctect.o: test/ctect.c
