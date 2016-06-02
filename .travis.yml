@@ -1,0 +1,4 @@
+script:
+  - cd ./Project
+  - make Convert
+  - make test
