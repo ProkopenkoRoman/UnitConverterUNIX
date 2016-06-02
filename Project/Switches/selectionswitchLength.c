@@ -18,10 +18,10 @@ double selectionswitchLength(double MEASUREMENT)
            "7 - Аршин;\n"
            "8 - Миля;\n"
            "9 - Ярд;\n"
-           "10 - Фут;\n \t"
-           "11 - Микрометр;\n \t"
-           "12 - Нанометр; \n \t"
-           "13 - Ангстрем;\n \t"
+           "10 - Фут;\n"
+           "11 - Микрометр;\n"
+           "12 - Нанометр; \n"
+           "13 - Ангстрем;\n"
            "14 - Морская миля; \n \t");
   //scanf("%d", &key.input_choice);
   scanf("%s", key.in);
@@ -43,10 +43,10 @@ double selectionswitchLength(double MEASUREMENT)
            "7 - Аршин;\n"
            "8 - Миля;\n"
            "9 - Ярд;\n"
-           "10 - Фут;\n \t"
-           "11 - Микрометр;\n \t"
-           "12 - Нанометр; \n \t"
-           "13 - Ангстрем;\n \t"
+           "10 - Фут;\n"
+           "11 - Микрометр;\n"
+           "12 - Нанометр; \n"
+           "13 - Ангстрем;\n"
            "14 - Морская миля; \n \t");
     //scanf("%d", &key.output_choice);
     scanf("%s", key.out);
@@ -60,9 +60,9 @@ double selectionswitchLength(double MEASUREMENT)
 
     if(key.input_choice < 10 && key.output_choice < 10)
 		key.id = key.input_choice * 10 + key.output_choice;
-	if(key.input_choice == 10 && key.output_choice <= 10)
+	if(key.input_choice >= 10 && key.output_choice <= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
-	if(key.input_choice < 10 && key.output_choice == 10)
+	if(key.input_choice < 10 && key.output_choice >= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
 
     switch(key.id) {

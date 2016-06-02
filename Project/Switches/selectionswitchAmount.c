@@ -41,7 +41,7 @@ double selectionswitchAmount(double MEASUREMENT)
            "7 - Миллилитр;\n"
            "8 - Галлон;\n"
            "9 - Баррель;\n"
-           "10 - Кварта;\n "
+           "10 - Кварта;\n"
            "11 - Пинта;\n"
            "12 - Жидкая унция;\n\t");
     //scanf("%d", &key.output_choice);
@@ -56,9 +56,9 @@ double selectionswitchAmount(double MEASUREMENT)
 
     if(key.input_choice < 10 && key.output_choice < 10)
 		key.id = key.input_choice * 10 + key.output_choice;
-	if(key.input_choice == 10 && key.output_choice <= 10)
+	if(key.input_choice >= 10 && key.output_choice <= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
-	if(key.input_choice < 10 && key.output_choice == 10)
+	if(key.input_choice < 10 && key.output_choice >= 10)
 		key.id = key.input_choice * 100 + key.output_choice;
 
     switch(key.id) {
