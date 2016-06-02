@@ -15,12 +15,12 @@ void convert(double RESULT) {
 		ost *= 10;
 	}
 	
-	if (i == 20){
+	/*if (i == 20){
 		printf("Результат конвертирования: %.0f\n", RESULT);
-	} else {
+	} else {*/
 		printf("Результат конвертирования: %e\n", RESULT);
 		//sprintf(buf," %%.%df\n", i + 3);
 		//printf(buf, RESULT);
-		} 	
+		//} 	
 
 }
