@@ -1,3 +1,5 @@
+language: c
+compiler: gcc
 script:
   - cd ./Project
   - make Convert
