@@ -28,12 +28,12 @@ int main()
                "10 - ++Площадь;\t\t\t20 - Энергия; \n\t");
         scanf("%s", &head.measurement_id);
 		int f = parsing_id(head.measurement_id);
-		printf("%d \n", f);
+		//printf("%d \n", f);
         while(f >= 21 || f <= 0) {
             printf("\nРод величины вами не выбран. Сделайте корректный выбор: \n\t");
             scanf("%s", &head.measurement_id);
             f = parsing_id(head.measurement_id);
-            printf("%d \n", f);
+            //printf("%d \n", f);
         }
 
         switch(f) {
@@ -59,7 +59,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchPression(head.VOLUME);
                 break;
             case 3:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -71,7 +71,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchData(head.VOLUME);
                 break;
             case 4:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -83,7 +83,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchLength(head.VOLUME);
                 break;
             case 5:
                 fprintf(stderr, "Модуль не существует\n");
@@ -99,7 +99,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchQuantityOfSubstance(head.VOLUME);
                 break;
             case 7:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -111,7 +111,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchMass(head.VOLUME);
                 break;
             case 8:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -123,7 +123,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchPower(head.VOLUME);
                 break;
             case 9:
 				printf("Введите число, которое Вы хотели были перевести. \n"
@@ -135,7 +135,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchAmount(head.VOLUME);
                 break;
             case 10:
                 fprintf(stderr, "Модуль не существует\n");
@@ -155,7 +155,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchRadiation(head.VOLUME);
                 break;
             case 13:
                 fprintf(stderr, "Модуль не существует\n");
@@ -175,7 +175,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchSpeed(head.VOLUME);
                 break;
             case 16:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -187,7 +187,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchResistance(head.VOLUME);
                 break;
             case 17:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -199,7 +199,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchTemperature(head.VOLUME);
                 break;
             case 18:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -211,7 +211,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchAngle(head.VOLUME);
                 break;
             case 19:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -223,7 +223,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchFrequency(head.VOLUME);
                 break;
             case 20:
                 printf("Введите число, которое Вы хотели были перевести. \n"
@@ -235,7 +235,7 @@ int main()
 					scanf("%s", head.MEASUREMENT);
 					head.VOLUME = parsing(head.MEASUREMENT);
 				}
-                head.result = selectionswitchTime(head.VOLUME);
+                head.result = selectionswitchEnergy(head.VOLUME);
                 break;
             default:
                 fprintf(stderr, "Вы пытаетесь выбрать род величины, которого не существует. Программа будет завершена;");
@@ -245,10 +245,9 @@ int main()
         convert(head.result);
 
         printf("Вам нравится?\n");
-        printf("Если хотите продолжить введите 'y', для выхода введите 'q'\n");
+        printf("Если хотите продолжить введите 'y', для выхода введите 'q'\n\t");
         scanf("%s", &head.like_to_continue);
         if(head.like_to_continue == 'q'){
-			printf("Прощай мой дорогой друг\n");
 			exit(EXIT_SUCCESS);
 		}
         printf("\n");
