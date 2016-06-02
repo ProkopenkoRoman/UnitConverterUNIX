@@ -60,10 +60,7 @@ $(FLAG)/QuantityOfSubstance.o: Modules/QuantityOfSubstance.c
 
 $(FLAG)/Speed.o: Modules/Speed.c
 		gcc -c Modules/Speed.c -o $(FLAG)/Speed.o
-		
-$(FLAG)/Strength.o: Modules/Strength.c
-		gcc -c Modules/Strength.c -o $(FLAG)/Strength.o
-		
+
 $(FLAG)/Temperature.o: Modules/Temperature.c
 		gcc -c Modules/Temperature.c -o $(FLAG)/Temperature.o
 		
